@@ -29,6 +29,6 @@ gh pr create \
   --repo "$TARGET_REPO" \
   --title "👋 안녕? 자동 생성된 PR이야" \
   --body "이 PR은 'automation-controller' 레퍼지토리의 GitHub Actions에 의해 자동으로 생성되었습니다." \
-  --base main
+  --base master
 
 echo "PR for ${TARGET_REPO} created successfully!"
