@@ -1,0 +1,27 @@
+name: Create PRs in Other Repos
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-prs:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo:
+          - 'KYBee/target-repo-A'
+          - 'KYBee/target-repo-B'
+          - 'KYBee/target-repo-C'
+
+    steps:
+      - name: Checkout Repo 1
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x ./create_pr.sh
+
+      - name: Run PR Creation Script
+        run: ./create_pr.sh ${{ matrix.repo }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_ACTION_PAT }}
+          GH_TOKEN: ${{ secrets.MY_ACTION_PAT }}
